@@ -25,17 +25,20 @@ document.getElementById("generatePW").onclick = function(){
         randomly choose an order to concatenate them
     */
 
-    /*
-    ##Code to prompt for user responses##
+    //##Code to prompt for user responses##
     var passLength = prompt("Choose a password length (between 8 and 128): ");
     var charSpecial = prompt("Type your special characters: ");
     var charNum = prompt("Type your numeric characters:" );
     var charLower = prompt("Type your lowercase characters:" );
     var charUpper = prompt("Type your uppercase characters: ");
-    */
 
-    var someText = prompt("Type some text: ")
-    var textArea = document.getElementById("textArea")
+    var totalCharLength = charSpecial.length + charNum.length + charLower.length + charUpper.length;
 
-    textArea.textContent = someText;
+    console.log(totalCharLength);
+
+
+    // var someText = prompt("Type some text: ")
+    // var textArea = document.getElementById("textArea")
+
+    // textArea.textContent = someText;
 };
