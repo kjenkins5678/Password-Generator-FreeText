@@ -10,11 +10,17 @@ for (i = 8; i < 129; i++)
 
 var pwGen = document.querySelector("#generatePW");
 var pwLen = pwLenSelector.options[pwLenSelector.selectedIndex].value;
+var specChar = document.getElementById("special-characters");
+var numChar = document.getElementById("numeric-characters");
+var ucChar = document.getElementById("uppercase-characters");
+var lcChar = document.getElementById("lowercase-characters");
 
 pwGen.addEventListener("click", function(event){
     event.preventDefault();
     console.log(pwLen);
-
-    
+    console.log(specChar.value);
+    console.log(numChar.value);
+    console.log(ucChar.value);
+    console.log(lcChar.value);
 });
 
