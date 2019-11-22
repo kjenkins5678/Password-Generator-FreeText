@@ -17,12 +17,40 @@
         </div>
     </nav>
 <div class="container">
-    <div class="jumbotron bg-light mt-5 text-center">
+    <div class="jumbotron bg-light mt-5">
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Number of Characters</label>
+                <select multiple class="form-control" id="exampleFormControlSelect2">
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Special Characters</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Numeric Characters</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Uppercase Characters</label>
+                <input type="text" class="form-control" id="formGroupExampleInput3">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Lowercase Characters</label>
+                <input type="text" class="form-control" id="formGroupExampleInput4">
+            </div>
+        </form>
         <a class="btn btn-danger btn-lg" id="generatePW" href="#" role="button">Generate Password</a>
         <hr class="my-4">
         <textarea class="form-control" id="textArea" rows="5"></textarea>
         <hr class="my-4">
-        <a class="btn btn-primary btn-lg float-right" href="#" role="button">Copy to Clipboard</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Copy to Clipboard</a>
     </div>
 </div>
 <script src="script.js"></script>

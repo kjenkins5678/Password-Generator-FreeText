@@ -26,16 +26,26 @@ document.getElementById("generatePW").onclick = function(){
     */
 
     //##Code to prompt for user responses##
+
     var passLength = prompt("Choose a password length (between 8 and 128): ");
     var charSpecial = prompt("Type your special characters: ");
     var charNum = prompt("Type your numeric characters:" );
     var charLower = prompt("Type your lowercase characters:" );
     var charUpper = prompt("Type your uppercase characters: ");
 
-    var totalCharLength = charSpecial.length + charNum.length + charLower.length + charUpper.length;
+    var pwdChar = [charSpecial, charNum, charLower, charUpper];
 
-    console.log(totalCharLength);
+    // var totalCharLength = charSpecial.length + charNum.length + charLower.length + charUpper.length;
+    for (i = 0; i < pwdChar.length; i++){
+        console.log(pwdChar[i]);
+        if (!pwdChar[i]){
+            console.log("we have a blank")
+            pwdChar.splice(i, 1);
+        }
+        console.log(pwdChar.length)
 
+    } 
+    
 
     // var someText = prompt("Type some text: ")
     // var textArea = document.getElementById("textArea")
