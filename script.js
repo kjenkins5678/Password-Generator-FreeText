@@ -14,6 +14,9 @@ var specChar = document.getElementById("special-characters");
 var numChar = document.getElementById("numeric-characters");
 var ucChar = document.getElementById("uppercase-characters");
 var lcChar = document.getElementById("lowercase-characters");
+var alphabetChar = "abcdefghijklmnopqrstuvwxyz".split("");
+var numericChar = "1234567890".split("");
+var specialChar = "!@#$%^&*()_+-={}|\][;'\":<>?/.,~`".split("");
 
 function validateInput()
 {
@@ -21,6 +24,8 @@ function validateInput()
     {
         alert("Enter characters in at least one box")
     }
+
+    
 }
 
 pwGen.addEventListener("click", function(event){
@@ -31,5 +36,8 @@ pwGen.addEventListener("click", function(event){
     console.log(ucChar.value);
     console.log(lcChar.value);
     validateInput();
+    console.log(alphabetChar);
+    console.log(numericChar);
+    console.log(specialChar);
 });
 
