@@ -15,6 +15,14 @@ var numChar = document.getElementById("numeric-characters");
 var ucChar = document.getElementById("uppercase-characters");
 var lcChar = document.getElementById("lowercase-characters");
 
+function validateInput()
+{
+    if (!specChar.value && !numChar.value && !ucChar.value && !lcChar.value)
+    {
+        alert("Enter characters in at least one box")
+    }
+}
+
 pwGen.addEventListener("click", function(event){
     event.preventDefault();
     console.log(pwLen);
@@ -22,5 +30,6 @@ pwGen.addEventListener("click", function(event){
     console.log(numChar.value);
     console.log(ucChar.value);
     console.log(lcChar.value);
+    validateInput();
 });
 
