@@ -22,70 +22,56 @@ var copybtn = document.getElementById("copy");
 
 function validateInput()
 {
-    if (!specChar.value && !numChar.value && !ucChar.value && !lcChar.value)
-    {
+    if (!specChar.value && !numChar.value && !ucChar.value && !lcChar.value){
         alert("Enter characters in at least one box")
     }
 
-    if (!specChar.value == "")
-    {
+    if (!specChar.value == ""){
         var specChars = specChar.value.split("");
 
         for (i = 0; i < specChars.length; i++)
     {
-        // console.log("input list character: " + specChars[i]);
-
-        if (specialChar.indexOf(specChars[i]) == -1)
-        {
-            console.log("check special characters - validation failed")
+        if (specialChar.indexOf(specChars[i]) == -1){
+            alert("check special characters - validation failed")
             break;
         }
     }
     }
 
-    if (!numChar.value == "")
-    {
+    if (!numChar.value == ""){
         var numChars = numChar.value.split("");
 
         for (i = 0; i < numChars.length; i++)
     {
-        // console.log("input list character: " + numChars[i]);
 
-        if (numericChar.indexOf(numChars[i]) == -1)
-        {
-            console.log("check numeric characters - validation failed")
+        if (numericChar.indexOf(numChars[i]) == -1){
+            alert("check numeric characters - validation failed")
             break;
         }
     }
     }
 
-    if (!ucChar.value == "")
-    {
+    if (!ucChar.value == ""){
         var ucChars = ucChar.value.split("");
 
         for (i = 0; i < ucChars.length; i++)
     {
-        // console.log("input list character: " + ucChars[i]);
 
-        if (alphabetUChar.indexOf(ucChars[i]) == -1)
-        {
-            console.log("check uppercase characters - validation failed")
+        if (alphabetUChar.indexOf(ucChars[i]) == -1){
+            alert("check uppercase characters - validation failed")
             break;
         }
     }
     }
 
-    if (!lcChar.value == "")
-    {
+    if (!lcChar.value == ""){
         var lcChars = lcChar.value.split("");
 
         for (i = 0; i < lcChars.length; i++)
     {
-        // console.log("input list character: " + lcChars[i]);
 
-        if (alphabetChar.indexOf(lcChars[i]) == -1)
-        {
-            console.log("check lowercase characters - validation failed")
+        if (alphabetChar.indexOf(lcChars[i]) == -1){
+            alert("check lowercase characters - validation failed")
             break;
         }
     }
@@ -97,28 +83,23 @@ function randomizer ()
     var popFields = [];
     var randomArray = [];
 
-    if (!specChar.value == "")
-    {
+    if (!specChar.value == ""){
         popFields.push(specChar.value)
     }
 
-    if (!numChar.value == "")
-    {
+    if (!numChar.value == ""){
         popFields.push(numChar.value)
     }
 
-    if (!ucChar.value == "")
-    {
+    if (!ucChar.value == ""){
         popFields.push(ucChar.value)
     }
 
-    if (!lcChar.value == "")
-    {
+    if (!lcChar.value == ""){
         popFields.push(lcChar.value)
     }
 
-    do
-    {
+    do{
         var randomNum = Math.floor(Math.random() * popFields.length);
         randomArray.push(popFields[randomNum]);
         popFields.splice(randomNum, 1);
@@ -133,15 +114,11 @@ function fixLength(pwLen)
 {
     var result = randomizer();
     console.log("pwlen: " + pwLen);
-    if (result.length == pwLen)
-    {
-        // console.log("same length condition hit: " + result)
+    if (result.length == pwLen){
         textbox.innerHTML=result;
     }
 
-    if (result.length < pwLen)
-    {
-        console.log("result in beginning of greater than if: " + result);
+    if (result.length < pwLen){
         var remainder = pwLen % result.length;
         var multiplyBy = 0;
         if (remainder == 0){
@@ -154,14 +131,13 @@ function fixLength(pwLen)
             result = multResult + result.slice(0, remainder);
             textbox.innerHTML=result;
         }
+    }
 
-    if (result.length > pwLen)
-    {
+    if (result.length > pwLen){
         console.log("length greater than condition hit: " + result);
         textbox.innerHTML=result.slice(0, pwLen);
     }
-        
-    }
+};
 
 // function copy2clip() { 
 //     var copyText = textbox.value
@@ -184,6 +160,3 @@ pwGen.addEventListener("click", function(event){
     validateInput();
     fixLength(pwLen);
 });
-
-
-
