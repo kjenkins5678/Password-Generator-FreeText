@@ -9,7 +9,6 @@ for (i = 8; i < 129; i++)
 };
 
 var pwGen = document.querySelector("#generatePW");
-var pwLen = pwLenSelector.options[pwLenSelector.selectedIndex].value;
 var specChar = document.getElementById("special-characters");
 var numChar = document.getElementById("numeric-characters");
 var ucChar = document.getElementById("uppercase-characters");
@@ -34,7 +33,7 @@ function validateInput()
 
         for (i = 0; i < specChars.length; i++)
     {
-        console.log("input list character: " + specChars[i]);
+        // console.log("input list character: " + specChars[i]);
 
         if (specialChar.indexOf(specChars[i]) == -1)
         {
@@ -50,7 +49,7 @@ function validateInput()
 
         for (i = 0; i < numChars.length; i++)
     {
-        console.log("input list character: " + numChars[i]);
+        // console.log("input list character: " + numChars[i]);
 
         if (numericChar.indexOf(numChars[i]) == -1)
         {
@@ -66,7 +65,7 @@ function validateInput()
 
         for (i = 0; i < ucChars.length; i++)
     {
-        console.log("input list character: " + ucChars[i]);
+        // console.log("input list character: " + ucChars[i]);
 
         if (alphabetUChar.indexOf(ucChars[i]) == -1)
         {
@@ -82,7 +81,7 @@ function validateInput()
 
         for (i = 0; i < lcChars.length; i++)
     {
-        console.log("input list character: " + lcChars[i]);
+        // console.log("input list character: " + lcChars[i]);
 
         if (alphabetChar.indexOf(lcChars[i]) == -1)
         {
@@ -123,7 +122,6 @@ function randomizer ()
         var randomNum = Math.floor(Math.random() * popFields.length);
         randomArray.push(popFields[randomNum]);
         popFields.splice(randomNum, 1);
-        console.log(popFields);
     }
     while (popFields.length > 0);
 
@@ -131,37 +129,39 @@ function randomizer ()
     return randomString;
 };
 
-function fixLength()
+function fixLength(pwLen)
 {
     var result = randomizer();
+    console.log("pwlen: " + pwLen);
     if (result.length == pwLen)
     {
+        // console.log("same length condition hit: " + result)
         textbox.innerHTML=result;
     }
 
     if (result.length < pwLen)
     {
-        var short = pwLen - result.length;
-        if (short < pwLen)
-        {
-            result = result + result.slice(0, short + 1);
+        console.log("result in beginning of greater than if: " + result);
+        var remainder = pwLen % result.length;
+        var multiplyBy = 0;
+        if (remainder == 0){
+            multiplyBy = pwLen/result.length;
+            textbox.innerHTML=result.repeat(multiplyBy);
+        } else {
+            var numerator = pwLen - remainder;
+            multiplyBy = numerator / result.length;
+            var multResult = result.repeat(multiplyBy);
+            result = multResult + result.slice(0, remainder);
             textbox.innerHTML=result;
         }
 
-        // if (short > pwLen)
-        // {
-
-        // }
-    }
-
     if (result.length > pwLen)
     {
-        console.log("greater")
-        result = result.slice(0, pwLen + 1);
-        textbox.innerHTML=result;
+        console.log("length greater than condition hit: " + result);
+        textbox.innerHTML=result.slice(0, pwLen);
     }
-
-}
+        
+    }
 
 // function copy2clip() { 
 //     var copyText = textbox.value
@@ -178,14 +178,11 @@ function fixLength()
 //   }
 
 pwGen.addEventListener("click", function(event){
+
     event.preventDefault();
+    pwLen = parseInt(pwLenSelector.options[pwLenSelector.selectedIndex].value);
     validateInput();
-    console.log(pwLen);
-    console.log(specChar.value);
-    console.log(numChar.value);
-    console.log(ucChar.value);
-    console.log(lcChar.value);
-    fixLength();
+    fixLength(pwLen);
 });
 
 
